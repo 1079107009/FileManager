@@ -21,5 +21,7 @@
 
         <include layout="@layout/layout_appbar"/>
         <include layout="@layout/layout_search"/>
+
+
     </android.support.design.widget.CoordinatorLayout>
 </android.support.v4.widget.DrawerLayout>
