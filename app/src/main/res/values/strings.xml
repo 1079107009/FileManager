@@ -8,4 +8,15 @@
     <string name="icon">图标</string>
     <string name="apps">应用管理</string>
     <string name="ftp">FTP 服务器</string>
+    <string name="paste">粘贴</string>
+    <string name="search">搜索</string>
+    <string name="home">首页目录</string>
+    <string name="sort">排序</string>
+    <string name="sortby">排序方式</string>
+    <string name="directorysort">目录排序方式</string>
+    <string name="history">历史记录</string>
+    <string name="hiddenfiles">已隐藏文件</string>
+    <string name="setashome">设为首页目录</string>
+    <string name="extract">提取</string>
+    <string name="exit">退出应用</string>
 </resources>
