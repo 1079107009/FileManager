@@ -40,4 +40,5 @@ dependencies {
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.1'
 
     compile 'com.github.clans:fab:1.6.4'
+    compile 'com.afollestad.material-dialogs:core:0.9.4.3'
 }
