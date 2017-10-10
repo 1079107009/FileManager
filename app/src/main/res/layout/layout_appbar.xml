@@ -16,8 +16,7 @@
         app:popupTheme="?attr/popup"
         app:contentInsetLeft="72dp"
         app:contentInsetStart="72dp"
-        app:layout_scrollFlags="scroll|enterAlways"
-        >
+        app:layout_scrollFlags="scroll|enterAlways">
 
     </android.support.v7.widget.Toolbar>
 

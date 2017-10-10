@@ -1,4 +1,4 @@
-package com.lp.filemanager;
+package com.lp.easypermissions;
 
 import org.junit.Test;
 

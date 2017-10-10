@@ -1,4 +1,4 @@
-package com.lp.filemanager;
+package com.lp.easypermissions;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.lp.file", appContext.getPackageName());
+        assertEquals("com.lp.easypermissions.test", appContext.getPackageName());
     }
 }
