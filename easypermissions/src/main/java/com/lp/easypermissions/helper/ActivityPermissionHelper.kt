@@ -1,18 +1,17 @@
 package com.lp.easypermissions.helper
 
+import android.app.Activity
+import android.app.FragmentManager
 import android.content.Context
 import android.support.v4.app.ActivityCompat
-import android.support.v4.app.FragmentManager
-import android.support.v7.app.AppCompatActivity
 
 /**
- * Created by LiPin on 2017/10/10 14:25.
- * 描述：Permissions helper for {@link AppCompatActivity}.
+ * Created by LiPin on 2017/10/11 10:09.
+ * 描述：
  */
-class AppCompatActivityPermissionHelper(host: AppCompatActivity) :
-        BaseSupportPermissionsHelper<AppCompatActivity>(host) {
+class ActivityPermissionHelper(host: Activity) : BaseFrameworkPermissionsHelper<Activity>(host) {
 
-    override fun getSupportFragmentManager(): FragmentManager = getHost().supportFragmentManager
+    override fun getFragmentManager(): FragmentManager = getHost().fragmentManager
 
     override fun directRequestPermissions(requestCode: Int, vararg perms: String) {
         ActivityCompat.requestPermissions(getHost(), perms, requestCode)

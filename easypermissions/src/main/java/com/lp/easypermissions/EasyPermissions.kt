@@ -187,17 +187,15 @@ object EasyPermissions {
      * @return `true` if the permissions has been permanently denied.
      */
     fun permissionPermanentlyDenied(host: Activity,
-                                    deniedPermission: String): Boolean {
-        return PermissionHelper.newInstance(host).permissionPermanentlyDenied(deniedPermission)
-    }
+                                    deniedPermission: String): Boolean =
+            PermissionHelper.newInstance(host).permissionPermanentlyDenied(deniedPermission)
 
     /**
      * @see .permissionPermanentlyDenied
      */
     fun permissionPermanentlyDenied(host: Fragment,
-                                    deniedPermission: String): Boolean {
-        return PermissionHelper.newInstance(host).permissionPermanentlyDenied(deniedPermission)
-    }
+                                    deniedPermission: String): Boolean =
+            PermissionHelper.newInstance(host).permissionPermanentlyDenied(deniedPermission)
 
     /**
      * See if some denied permission has been permanently denied.
@@ -208,17 +206,15 @@ object EasyPermissions {
      * rationale, false otherwise.
      */
     fun somePermissionDenied(host: Activity,
-                             vararg perms: String): Boolean {
-        return PermissionHelper.newInstance(host).somePermissionDenied(*perms)
-    }
+                             vararg perms: String): Boolean =
+            PermissionHelper.newInstance(host).somePermissionDenied(*perms)
 
     /**
      * @see .somePermissionDenied
      */
     fun somePermissionDenied(host: Fragment,
-                             vararg perms: String): Boolean {
-        return PermissionHelper.newInstance(host).somePermissionDenied(*perms)
-    }
+                             vararg perms: String): Boolean =
+            PermissionHelper.newInstance(host).somePermissionDenied(*perms)
 
     /**
      * Run permission callbacks on an object that requested permissions but already has them by

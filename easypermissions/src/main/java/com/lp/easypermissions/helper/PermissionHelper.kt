@@ -4,7 +4,6 @@ import android.app.Activity
 import android.content.Context
 import android.os.Build
 import android.support.annotation.NonNull
-import android.support.annotation.RestrictTo
 import android.support.annotation.StringRes
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
@@ -12,9 +11,9 @@ import android.support.v7.app.AppCompatActivity
 
 /**
  * Created by LiPin on 2017/10/10 9:50.
- * 描述：
+ * 描述：代理类
  */
-abstract class PermissionHelper<out T>(@NonNull host: T) {
+abstract class PermissionHelper<T>(@NonNull host: T) {
 
     private val TAG = "PermissionHelper"
 
@@ -34,7 +33,7 @@ abstract class PermissionHelper<out T>(@NonNull host: T) {
             }
         }
 
-        fun newInstance(host: Fragment): PermissionHelper<T> {
+        fun newInstance(host: Fragment): PermissionHelper {
             return if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
                 LowApiPermissionsHelper(host)
             } else SupportFragmentPermissionHelper(host)
@@ -47,9 +46,8 @@ abstract class PermissionHelper<out T>(@NonNull host: T) {
     // Public concrete methods
     // ============================================================================
 
-    fun shouldShowRationale(@NonNull vararg perms: String): Boolean {
-        return perms.any { shouldShowRequestPermissionRationale(it) }
-    }
+    fun shouldShowRationale(@NonNull vararg perms: String): Boolean =
+            perms.any { shouldShowRequestPermissionRationale(it) }
 
     fun requestPermissions(@NonNull rationale: String,
                            @StringRes positiveButton: Int,
@@ -64,19 +62,14 @@ abstract class PermissionHelper<out T>(@NonNull host: T) {
         }
     }
 
-    fun somePermissionPermanentlyDenied(@NonNull vararg perms: String): Boolean {
+    fun somePermissionPermanentlyDenied(@NonNull vararg perms: String): Boolean =
+            //如果元素中至少有一个满足则返回true
+            perms.any { permissionPermanentlyDenied(it) }
 
-        //如果元素中至少有一个满足则返回true
-        return perms.any { permissionPermanentlyDenied(it) }
-    }
+    fun permissionPermanentlyDenied(@NonNull perms: String): Boolean =
+            !shouldShowRequestPermissionRationale(perms)
 
-    fun permissionPermanentlyDenied(@NonNull perms: String): Boolean {
-        return !shouldShowRequestPermissionRationale(perms)
-    }
-
-    fun somePermissionDenied(@NonNull vararg perms: String): Boolean {
-        return shouldShowRationale(*perms)
-    }
+    fun somePermissionDenied(@NonNull vararg perms: String): Boolean = shouldShowRationale(*perms)
 
     @NonNull
     fun getHost(): T = mHost

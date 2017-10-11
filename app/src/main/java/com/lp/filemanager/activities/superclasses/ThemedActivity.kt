@@ -17,8 +17,7 @@ open class ThemedActivity : PreferenceActivity(), PermissionCallbacks {
         super.onCreate(savedInstanceState)
 
         //请求存储权限
-        val rationale = resources.getString(R.string.granttext)
-        EasyPermissions.requestPermissions(this, rationale, 4396,
+        EasyPermissions.requestPermissions(this, getString(R.string.granttext), 4396,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE)
     }
 
