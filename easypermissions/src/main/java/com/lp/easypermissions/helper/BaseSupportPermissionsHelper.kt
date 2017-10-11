@@ -9,7 +9,7 @@ import com.lp.easypermissions.RationaleDialogFragmentCompat
  * Created by LiPin on 2017/10/10 14:27.
  * 描述：
  */
-abstract class BaseSupportPermissionsHelper<T>(host: T) : PermissionHelper<T>(host) {
+abstract class BaseSupportPermissionsHelper<out T>(host: T) : PermissionHelper<T>(host) {
 
     abstract fun getSupportFragmentManager(): FragmentManager
 

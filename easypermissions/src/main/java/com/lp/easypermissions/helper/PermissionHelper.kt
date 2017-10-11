@@ -13,7 +13,7 @@ import android.support.v7.app.AppCompatActivity
  * Created by LiPin on 2017/10/10 9:50.
  * 描述：代理类
  */
-abstract class PermissionHelper<T>(@NonNull host: T) {
+abstract class PermissionHelper<out T>(@NonNull host: T) {
 
     private val TAG = "PermissionHelper"
 
@@ -21,7 +21,7 @@ abstract class PermissionHelper<T>(@NonNull host: T) {
 
     companion object {
 
-        fun newInstance(host: Activity): PermissionHelper {
+        fun newInstance(host: Activity): PermissionHelper<Any> {
             if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
                 return LowApiPermissionsHelper(host)
             }
@@ -33,7 +33,7 @@ abstract class PermissionHelper<T>(@NonNull host: T) {
             }
         }
 
-        fun newInstance(host: Fragment): PermissionHelper {
+        fun newInstance(host: Fragment): PermissionHelper<Any> {
             return if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
                 LowApiPermissionsHelper(host)
             } else SupportFragmentPermissionHelper(host)

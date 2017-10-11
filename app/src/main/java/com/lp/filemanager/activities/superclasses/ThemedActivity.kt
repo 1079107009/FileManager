@@ -1,16 +1,23 @@
 package com.lp.filemanager.activities.superclasses
 
 import android.Manifest
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
+import com.lp.easypermissions.AppSettingsDialog
 import com.lp.easypermissions.EasyPermissions
 import com.lp.easypermissions.PermissionCallbacks
 import com.lp.filemanager.R
+
 
 /**
  * Created by LiPin on 2017/9/21 15:15.
  * 描述：
  */
 open class ThemedActivity : PreferenceActivity(), PermissionCallbacks {
+
+    private val TAG = "ThemedActivity"
     var rootMode = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,8 +34,31 @@ open class ThemedActivity : PreferenceActivity(), PermissionCallbacks {
     }
 
     override fun onPermissionsGranted(requestCode: Int, perms: List<String>) {
+        Log.d(TAG, "onPermissionsGranted:" + requestCode + ":" + perms.size)
     }
 
     override fun onPermissionsDenied(requestCode: Int, perms: List<String>) {
+        Log.d(TAG, "onPermissionsDenied:" + requestCode + ":" + perms.size)
+        if (EasyPermissions.somePermissionPermanentlyDenied(this, *perms.toTypedArray())) {
+            AppSettingsDialog.Builder(this).build().show()
+        }
     }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode === AppSettingsDialog.DEFAULT_SETTINGS_REQ_CODE) {
+            val yes = "允许"
+            val no = "拒绝"
+
+            Toast.makeText(
+                    this,
+                    getString(R.string.returned_from_app_settings_to_activity,
+                            if (hasWritePermission()) yes else no),
+                    Toast.LENGTH_LONG)
+                    .show()
+        }
+    }
+
+    private fun hasWritePermission(): Boolean =
+            EasyPermissions.hasPermissions(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
 }

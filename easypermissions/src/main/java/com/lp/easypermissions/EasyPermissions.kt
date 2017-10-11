@@ -98,7 +98,7 @@ object EasyPermissions {
     }
 
     private fun requestPermissions(
-            helper: PermissionHelper, rationale: String,
+            helper: PermissionHelper<Any>, rationale: String,
             @StringRes positiveButton: Int, @StringRes negativeButton: Int,
             requestCode: Int, @NonNull vararg perms: String) {
 

@@ -23,4 +23,8 @@
     <string name="grantper">授予权限</string>
     <string name="granttext">该应用需要用户授予“读写存储空间”的权限，拒绝将无法使用此应用。</string>
     <string name="cancel">取消</string>
+    <string name="returned_from_app_settings_to_activity">
+         以下权限申请情况:
+        \n读写存储空间权限: %s
+    </string>
 </resources>

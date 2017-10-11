@@ -2,4 +2,6 @@
     <string name="app_name">easypermissions</string>
     <string name="ok">"确定"</string>
     <string name="cancel">"取消"</string>
+    <string name="rationale_ask_again">若没有这个权限应用将无法正常工作，打开应用设置界面来修改权限</string>
+    <string name="title_settings_dialog">请求权限</string>
 </resources>
