@@ -18,7 +18,9 @@ import com.lp.filemanager.R
 open class ThemedActivity : PreferenceActivity(), PermissionCallbacks {
 
     private val TAG = "ThemedActivity"
-    var rootMode = false
+    companion object {
+        var rootMode = false
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,12 +55,12 @@ open class ThemedActivity : PreferenceActivity(), PermissionCallbacks {
             Toast.makeText(
                     this,
                     getString(R.string.returned_from_app_settings_to_activity,
-                            if (hasWritePermission()) yes else no),
+                            if (hasStoragePermission()) yes else no),
                     Toast.LENGTH_LONG)
                     .show()
         }
     }
 
-    private fun hasWritePermission(): Boolean =
+    private fun hasStoragePermission(): Boolean =
             EasyPermissions.hasPermissions(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
 }
