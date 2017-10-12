@@ -48,7 +48,7 @@ open class ThemedActivity : PreferenceActivity(), PermissionCallbacks {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode === AppSettingsDialog.DEFAULT_SETTINGS_REQ_CODE) {
+        if (requestCode == AppSettingsDialog.DEFAULT_SETTINGS_REQ_CODE) {
             val yes = "允许"
             val no = "拒绝"
 
