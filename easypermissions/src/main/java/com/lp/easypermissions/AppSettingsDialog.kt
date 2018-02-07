@@ -80,7 +80,8 @@ class AppSettingsDialog : Parcelable {
             AlertDialog.Builder(mContext!!)
         }
 
-        return builder.setCancelable(false)
+        return builder
+                .setCancelable(false)
                 .setTitle(mTitle)
                 .setMessage(mRationale)
                 .setPositiveButton(mPositiveButtonText, positiveListener)
@@ -115,7 +116,9 @@ class AppSettingsDialog : Parcelable {
 
         override fun createFromParcel(parcel: Parcel): AppSettingsDialog = AppSettingsDialog(parcel)
 
-        override fun newArray(size: Int): Array<AppSettingsDialog?> = arrayOfNulls(size)
+        override fun newArray(size: Int): Array<AppSettingsDialog?> = AppSettingsDialog[size]
+
+        private operator fun get(size: Int): Array<AppSettingsDialog?> = AppSettingsDialog[size]
 
         fun fromIntent(intent: Intent, activity: Activity): AppSettingsDialog {
             val dialog = intent.getParcelableExtra<AppSettingsDialog>(AppSettingsDialog.EXTRA_APP_SETTINGS)

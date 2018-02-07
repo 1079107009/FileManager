@@ -4,11 +4,12 @@ import android.Manifest
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import com.lp.easypermissions.AppSettingsDialog
 import com.lp.easypermissions.EasyPermissions
 import com.lp.easypermissions.PermissionCallbacks
 import com.lp.filemanager.R
+import com.lp.filemanager.utils.hasStoragePermission
+import com.lp.filemanager.utils.showToast
 
 
 /**
@@ -18,6 +19,7 @@ import com.lp.filemanager.R
 open class ThemedActivity : PreferenceActivity(), PermissionCallbacks {
 
     private val TAG = "ThemedActivity"
+
     companion object {
         var rootMode = false
     }
@@ -27,7 +29,7 @@ open class ThemedActivity : PreferenceActivity(), PermissionCallbacks {
 
         //请求存储权限
         EasyPermissions.requestPermissions(this, getString(R.string.granttext), 4396,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                Manifest.permission.READ_EXTERNAL_STORAGE)
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
@@ -51,16 +53,9 @@ open class ThemedActivity : PreferenceActivity(), PermissionCallbacks {
         if (requestCode == AppSettingsDialog.DEFAULT_SETTINGS_REQ_CODE) {
             val yes = "允许"
             val no = "拒绝"
-
-            Toast.makeText(
-                    this,
-                    getString(R.string.returned_from_app_settings_to_activity,
-                            if (hasStoragePermission()) yes else no),
-                    Toast.LENGTH_LONG)
-                    .show()
+            showToast(getString(R.string.returned_from_app_settings_to_activity,
+                    if (hasStoragePermission()) yes else no))
         }
     }
 
-    private fun hasStoragePermission(): Boolean =
-            EasyPermissions.hasPermissions(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
 }

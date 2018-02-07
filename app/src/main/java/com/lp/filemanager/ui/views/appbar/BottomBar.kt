@@ -84,7 +84,6 @@ class BottomBar : View.OnTouchListener {
             }
 
             override fun onTick(millisUntilFinished: Long) {
-                //TODO:
             }
 
         }

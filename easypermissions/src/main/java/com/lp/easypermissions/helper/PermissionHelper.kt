@@ -42,11 +42,7 @@ abstract class PermissionHelper<out T>(@NonNull host: T) {
 
     }
 
-    // ============================================================================
-    // Public concrete methods
-    // ============================================================================
-
-    fun shouldShowRationale(@NonNull vararg perms: String): Boolean =
+    private fun shouldShowRationale(@NonNull vararg perms: String): Boolean =
             perms.any { shouldShowRequestPermissionRationale(it) }
 
     fun requestPermissions(@NonNull rationale: String,

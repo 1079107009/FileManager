@@ -1,35 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.lp.filemanager">
+    package="com.lp.filemanager">
 
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="com.amaze.cloud.permission.ACCESS_PROVIDER"/>
-    <uses-permission android:name="android.permission.USE_FINGERPRINT"/>
-    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="com.amaze.cloud.permission.ACCESS_PROVIDER" />
+    <uses-permission android:name="android.permission.USE_FINGERPRINT" />
     <uses-permission android:name="android.permission.USE_CREDENTIALS" />
     <uses-permission android:name="com.android.vending.BILLING" />
 
-    <!--声明Touchscreen属性，这个看个人需要，主要是声明你的app需不需要支持触摸屏输入。
-    值得注意的是，如果你的应用打算在googleplay上架，必须在你的manifest添加此段代码，否则不予上架-->
-    <uses-feature
-        android:name="android.hardware.touchscreen"
-        android:required="false"/>
-
-    <!--如果你的应用打算在各个设备(手机、可穿戴、tv)，将leanback的required的值设置为false；
-    设置为ture的话你的应用只可以在使用Leanback的设备上-->
-    <uses-feature
-        android:name="android.software.leanback"
-        android:required="false"/>
-
-    <!--系统使用banner来代表应用在Android TV的主屏幕，由于banner仅在主屏幕显示，
-    它只能由一个应用指定的activity并带有category_leanback_launcher意图-->
     <application
         android:name=".application.FileApplication"
-        android:banner="@drawable/about_header"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round">
@@ -39,11 +23,8 @@
             android:launchMode="singleInstance"
             android:theme="@style/appCompatLight">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-
-                <category android:name="android.intent.category.LAUNCHER"/>
-                <!--添加这个主要是为了googleplay的区分识别，没有添加相应过滤器的应用，googleplay是不允许上架的-->
-                <category android:name="android.intent.category.LEANBACK_LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>

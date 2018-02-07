@@ -33,10 +33,9 @@ object EasyPermissions {
             Log.w(TAG, "hasPermissions: API version < M, returning true by default")
             return true
         }
-
         return perms.none {
             //检查集合里的权限是否被授予，如果全部授予返回true，否则返回false
-            ContextCompat.checkSelfPermission(context, it) != PackageManager.PERMISSION_GRANTED
+            ContextCompat.checkSelfPermission(context, it) == PackageManager.PERMISSION_DENIED
         }
     }
 

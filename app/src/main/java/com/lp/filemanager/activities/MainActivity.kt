@@ -35,7 +35,7 @@ class MainActivity : ThemedActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         initAppBar()
-        initDrawerLayout()
+//        initDrawerLayout()
     }
 
     private fun initDrawerLayout() {
@@ -44,13 +44,7 @@ class MainActivity : ThemedActivity() {
         drawerHeaderView = drawerHeaderLayout!!.findViewById(R.id.drawer_header) as ImageView?
         drawerHeaderView?.setImageResource(R.drawable.amaze_header)
         drawerHeaderView?.setOnLongClickListener {
-            var intent: Intent? = null
-            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) {
-                intent = Intent()
-                intent.action = Intent.ACTION_GET_CONTENT
-            } else {
-                Intent(Intent.ACTION_OPEN_DOCUMENT)
-            }
+            val intent: Intent? = Intent(Intent.ACTION_OPEN_DOCUMENT)
             intent?.addCategory(Intent.CATEGORY_OPENABLE)
             intent?.type = "image/*"
             startActivityForResult(intent, IMAGE_SELECTOR_REQUEST_CODE)
@@ -73,6 +67,7 @@ class MainActivity : ThemedActivity() {
             }
 
         })
+        appbar?.setTitle("文件管理器")
     }
 
     fun hideSmokeScreen() {

@@ -1,7 +1,6 @@
 package com.lp.filemanager.ui.views.appbar
 
 import android.content.SharedPreferences
-import android.os.Build.VERSION.SDK_INT
 import android.support.design.widget.AppBarLayout
 import android.support.v7.widget.Toolbar
 import com.lp.filemanager.activities.MainActivity
@@ -25,7 +24,6 @@ class AppBar {
         bottomBar = BottomBar(this, a)
         appbarLayout = a.appbar
 
-        if (SDK_INT >= 21) toolbar!!.elevation = 0f
         if (!sharedPref.getBoolean("intelliHideToolbar", true)) {
             val params = toolbar!!.layoutParams as AppBarLayout.LayoutParams
             params.scrollFlags = 0
