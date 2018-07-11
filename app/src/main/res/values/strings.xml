@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">文件管理器</string>
     <string name="search_hint">请输入要搜索的内容&#8230;</string>
@@ -12,16 +13,17 @@
     <string name="search">搜索</string>
     <string name="home">首页目录</string>
     <string name="sort">排序</string>
-    <string name="sortby">排序方式</string>
-    <string name="directorysort">目录排序方式</string>
+    <string name="sortBy">排序方式</string>
+    <string name="directorySort">目录排序方式</string>
     <string name="history">历史记录</string>
-    <string name="hiddenfiles">已隐藏文件</string>
-    <string name="setashome">设为首页目录</string>
+    <string name="hiddenFiles">已隐藏文件</string>
+    <string name="setAsHome">设为首页目录</string>
     <string name="extract">提取</string>
     <string name="exit">退出应用</string>
     <string name="grant">授予</string>
-    <string name="grantper">授予权限</string>
-    <string name="granttext">该应用需要用户授予“读写存储空间”的权限，拒绝将无法使用此应用。</string>
+    <string name="prompt">提示</string>
+    <string name="grant_per">授予权限</string>
+    <string name="grant_text">该应用需要用户授予“读写存储空间”的权限，拒绝将无法使用此应用。</string>
     <string name="cancel">取消</string>
     <string name="returned_from_app_settings_to_activity">读写存储空间权限: %1$s</string>
 </resources>

@@ -14,15 +14,13 @@ object GeneralDialogCreation {
 //        val accentColor = m.getColorPreference().getColor(ColorUsage.ACCENT)
         val a = MaterialDialog.Builder(m)
                 .content(texts[0])
-                .widgetColor(m.resources.getColor(R.color.primary_pink))
+                .widgetColor(m.resources.getColor(R.color.colorAccent))
 //                .theme(m.getAppTheme().getMaterialDialogTheme())
                 .title(texts[1])
                 .positiveText(texts[2])
-                .positiveColor(m.resources.getColor(R.color.primary_pink))
+                .positiveColor(m.resources.getColor(R.color.colorAccent))
                 .negativeText(texts[3])
-                .negativeColor(m.resources.getColor(R.color.primary_pink))
-                .neutralText(texts[4])
-                .neutralColor(m.resources.getColor(R.color.primary_pink))
+                .negativeColor(m.resources.getColor(R.color.colorAccent))
         return a.build()
     }
 }

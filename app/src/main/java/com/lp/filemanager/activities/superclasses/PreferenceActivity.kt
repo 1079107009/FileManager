@@ -10,13 +10,11 @@ import android.preference.PreferenceManager
  */
 open class PreferenceActivity : BasicActivity() {
 
-    private var sharedPrefs: SharedPreferences? = null
+    lateinit var sharedPrefs: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this)
     }
-
-    public fun getPrefs() = sharedPrefs!!
 
 }

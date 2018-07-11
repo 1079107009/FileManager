@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="?android:attr/actionBarSize"
     android:layout_margin="@dimen/search_view_margin"
+    android:elevation="8dp"
     android:background="@drawable/bg_search_view_shape"
     android:gravity="center_vertical"
     android:visibility="gone">
@@ -12,12 +13,12 @@
     <ImageView
         android:id="@+id/img_view_back"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_centerInParent="true"
+        android:layout_marginLeft="@dimen/search_view_back_margin_left_right"
+        android:layout_marginRight="@dimen/search_view_back_margin_left_right"
         android:contentDescription="@string/app_name"
-        android:paddingLeft="@dimen/search_view_back_margin_left_right"
-        android:paddingRight="@dimen/search_view_back_margin_left_right"
         app:srcCompat="@drawable/ic_arrow_back_black_24dp" />
 
     <android.support.v7.widget.AppCompatEditText
@@ -30,16 +31,17 @@
         android:imeOptions="actionSearch"
         android:inputType="textAutoComplete"
         android:maxLines="1"
+        android:textColorHint="?android:attr/colorAccent"
         android:theme="@style/appCompatLight" />
 
     <ImageView
         android:id="@+id/search_close_btn"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_centerInParent="true"
+        android:layout_marginLeft="@dimen/search_view_info_margin_left_right"
+        android:layout_marginRight="@dimen/search_view_info_margin_left_right"
         android:contentDescription="@string/app_name"
-        android:paddingLeft="@dimen/search_view_info_margin_left_right"
-        android:paddingRight="@dimen/search_view_info_margin_left_right"
         app:srcCompat="@drawable/ic_close_black_24dp" />
 </com.lp.filemanager.ui.widgets.SearchView>
