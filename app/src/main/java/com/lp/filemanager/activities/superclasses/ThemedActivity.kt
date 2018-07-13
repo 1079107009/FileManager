@@ -1,8 +1,10 @@
 package com.lp.filemanager.activities.superclasses
 
+import android.content.SharedPreferences
 import android.os.Build
 import android.os.Build.VERSION.SDK_INT
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.support.v4.content.ContextCompat
 import android.view.WindowManager
 import com.lp.filemanager.R
@@ -13,9 +15,10 @@ import com.readystatesoftware.systembartint.SystemBarTintManager
  * Created by LiPin on 2017/9/21 15:15.
  * 描述：
  */
-open class ThemedActivity : PreferenceActivity() {
+open class ThemedActivity : BasicActivity() {
 
     private val TAG = "ThemedActivity"
+    private lateinit var sharedPrefs: SharedPreferences
 
     companion object {
         var rootMode = false
@@ -23,6 +26,7 @@ open class ThemedActivity : PreferenceActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this)
         setStatusBarColor()
         //请求存储权限
 //        val rxPermissions = RxPermissions(this)

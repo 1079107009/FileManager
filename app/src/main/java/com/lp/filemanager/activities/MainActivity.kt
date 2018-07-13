@@ -6,7 +6,8 @@ import android.view.Menu
 import android.view.MenuItem
 import com.lp.filemanager.R
 import com.lp.filemanager.activities.superclasses.ThemedActivity
-import kotlinx.android.synthetic.main.layout_appbar.*
+import com.lp.filemanager.adapters.MainAdapter
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.layout_search.*
 
 
@@ -15,11 +16,16 @@ class MainActivity : ThemedActivity() {
     private val TAG = "MainActivity"
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        Log.d(TAG, "onCreate")
         super.onCreate(savedInstanceState)
-        Log.d(TAG, "setContentView")
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
         setListener()
+        initRecyclerView()
+    }
+
+    private fun initRecyclerView() {
+        rvMain.adapter = MainAdapter(this)
     }
 
     private fun setListener() {

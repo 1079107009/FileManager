@@ -3,21 +3,16 @@
     <attr name="popup" format="reference" />
     <attr name="toolbar_theme" format="reference" />
     <declare-styleable name="DonutProgress">
-        <attr name="donut_progress" format="float" />
         <attr name="donut_max" format="integer" />
 
-        <attr name="donut_unfinished_color" format="color" />
+        <attr name="donut_ring_color" format="color" />
         <attr name="donut_finished_color" format="color" />
 
-        <attr name="donut_finished_stroke_width" format="dimension" />
-        <attr name="donut_unfinished_stroke_width" format="dimension" />
+        <attr name="donut_stroke_width" format="dimension" />
 
         <attr name="donut_text_size" format="dimension" />
         <attr name="donut_text_color" format="color" />
 
         <attr name="donut_background_color" format="color" />
-
-        <attr name="donut_circle_starting_degree" format="integer" />
-        <attr name="donut_show_text" format="boolean" />
     </declare-styleable>
 </resources>

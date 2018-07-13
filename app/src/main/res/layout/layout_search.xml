@@ -4,7 +4,7 @@
     android:id="@+id/searchView"
     android:layout_width="match_parent"
     android:layout_height="?android:attr/actionBarSize"
-    android:layout_margin="@dimen/search_view_margin"
+    android:layout_margin="@dimen/dp10"
     android:background="@drawable/bg_search_view_shape"
     android:gravity="center_vertical"
     android:visibility="gone">
@@ -16,8 +16,8 @@
         android:layout_alignParentStart="true"
         android:layout_centerInParent="true"
         android:contentDescription="@string/app_name"
-        android:paddingLeft="@dimen/search_view_back_margin_left_right"
-        android:paddingRight="@dimen/search_view_back_margin_left_right"
+        android:paddingLeft="@dimen/dp16"
+        android:paddingRight="@dimen/dp16"
         app:srcCompat="@drawable/ic_arrow_back_black_24dp" />
 
     <android.support.v7.widget.AppCompatEditText
@@ -39,7 +39,7 @@
         android:layout_alignParentEnd="true"
         android:layout_centerInParent="true"
         android:contentDescription="@string/app_name"
-        android:paddingLeft="@dimen/search_view_info_margin_left_right"
-        android:paddingRight="@dimen/search_view_info_margin_left_right"
+        android:paddingLeft="@dimen/dp16"
+        android:paddingRight="@dimen/dp16"
         app:srcCompat="@drawable/ic_close_black_24dp" />
 </com.lp.filemanager.ui.widgets.SearchView>

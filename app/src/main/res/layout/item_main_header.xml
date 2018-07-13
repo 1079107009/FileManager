@@ -4,50 +4,147 @@
     xmlns:custom="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/colorAccent">
+    android:background="@color/colorAccent"
+    android:paddingBottom="@dimen/dp10">
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/clInternalStorage"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         android:background="@drawable/bg_sdcard_selected"
-        android:paddingTop="20dp"
-        android:paddingBottom="20dp"
-        android:paddingLeft="10dp"
+        android:paddingBottom="@dimen/dp20"
+        android:paddingLeft="@dimen/dp10"
+        android:paddingTop="@dimen/dp20"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/clSdcard">
 
         <com.lp.filemanager.ui.widgets.DonutProgress
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:id="@+id/internalStorageProgress"
+            android:layout_width="@dimen/dp50"
+            android:layout_height="@dimen/dp50"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            custom:donut_progress="40"
-            custom:donut_max="100"
-            custom:donut_text_size="10sp"
-            custom:donut_text_color="@color/holo_dark_action_mode"
             custom:donut_background_color="@color/text_white"
-            custom:donut_finished_stroke_width="3dp"
-            custom:donut_unfinished_stroke_width="3dp"
-            custom:donut_circle_starting_degree="270"
-            custom:donut_unfinished_color="@color/text_white"
-            custom:donut_finished_color="@color/colorPrimaryDark" />
+            custom:donut_finished_color="@color/colorPrimaryDark"
+            custom:donut_max="100"
+            custom:donut_stroke_width="@dimen/dp3"
+            custom:donut_text_color="@color/holo_dark_action_mode"
+            custom:donut_text_size="@dimen/sp10" />
 
+        <TextView
+            android:id="@+id/tvInternalStorage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp8"
+            android:layout_marginTop="@dimen/dp8"
+            android:drawablePadding="@dimen/dp5"
+            android:drawableRight="@drawable/arrow_gray"
+            android:text="@string/internalStorage"
+            android:textColor="@color/holo_dark_action_mode"
+            android:textSize="@dimen/sp12"
+            app:layout_constraintStart_toEndOf="@id/internalStorageProgress"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvInternalStorage1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp8"
+            android:layout_marginTop="@dimen/dp8"
+            android:textColor="@color/text_646D75"
+            android:textSize="@dimen/sp10"
+            app:layout_constraintStart_toEndOf="@id/internalStorageProgress"
+            app:layout_constraintTop_toBottomOf="@id/tvInternalStorage" />
     </android.support.constraint.ConstraintLayout>
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/clSdcard"
-        android:layout_width="0dp"
-        android:layout_height="100dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:background="@drawable/bg_sdcard_selected"
+        android:paddingBottom="@dimen/dp20"
+        android:paddingLeft="@dimen/dp10"
+        android:paddingTop="@dimen/dp20"
         app:layout_constraintLeft_toRightOf="@id/clInternalStorage"
         app:layout_constraintRight_toRightOf="parent">
 
+        <com.lp.filemanager.ui.widgets.DonutProgress
+            android:id="@+id/sdcardProgress"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            custom:donut_background_color="@color/text_white"
+            custom:donut_finished_color="@color/colorPrimaryDark"
+            custom:donut_max="100"
+            custom:donut_stroke_width="3dp"
+            custom:donut_text_color="@color/holo_dark_action_mode"
+            custom:donut_text_size="10sp" />
+
+        <TextView
+            android:id="@+id/tvSdcard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp8"
+            android:layout_marginTop="@dimen/dp8"
+            android:drawablePadding="@dimen/dp5"
+            android:drawableRight="@drawable/arrow_gray"
+            android:text="@string/sdcard"
+            android:textColor="@color/holo_dark_action_mode"
+            android:textSize="@dimen/sp12"
+            app:layout_constraintStart_toEndOf="@id/sdcardProgress"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvSdcard1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp8"
+            android:layout_marginTop="@dimen/dp8"
+            android:textColor="@color/text_646D75"
+            android:textSize="@dimen/sp10"
+            app:layout_constraintStart_toEndOf="@id/sdcardProgress"
+            app:layout_constraintTop_toBottomOf="@id/tvSdcard" />
 
     </android.support.constraint.ConstraintLayout>
 
+    <TextView
+        android:id="@+id/tvFileAnalyzer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp10"
+        android:paddingLeft="@dimen/dp10"
+        android:text="@string/file_analyzer"
+        android:textColor="@color/text_white"
+        android:textSize="@dimen/sp16"
+        app:layout_constraintStart_toStartOf="@id/clInternalStorage"
+        app:layout_constraintTop_toBottomOf="@id/clInternalStorage" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp8"
+        android:alpha="0.6"
+        android:paddingLeft="@dimen/dp10"
+        android:text="@string/find_clean_file"
+        android:textColor="@color/text_white"
+        android:textSize="@dimen/sp12"
+        app:layout_constraintStart_toStartOf="@id/tvFileAnalyzer"
+        app:layout_constraintTop_toBottomOf="@id/tvFileAnalyzer" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/dp10"
+        android:layout_marginTop="@dimen/dp8"
+        android:background="@drawable/bg_shape_analyzer"
+        android:paddingBottom="@dimen/dp5"
+        android:paddingLeft="@dimen/dp20"
+        android:paddingRight="@dimen/dp20"
+        android:paddingTop="@dimen/dp5"
+        android:text="@string/analyzer"
+        android:textColor="@color/text_white"
+        android:textSize="@dimen/sp16"
+        app:layout_constraintEnd_toEndOf="@id/clSdcard"
+        app:layout_constraintTop_toTopOf="@id/tvFileAnalyzer" />
 </android.support.constraint.ConstraintLayout>

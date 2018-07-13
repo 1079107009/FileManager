@@ -9,6 +9,8 @@ import com.squareup.leakcanary.LeakCanary
  */
 class FileApplication : Application() {
 
+    private val TAG = "FileApplication"
+
     override fun onCreate() {
         super.onCreate()
         if (LeakCanary.isInAnalyzerProcess(this)) {

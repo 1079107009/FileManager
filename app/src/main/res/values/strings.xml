@@ -26,4 +26,12 @@
     <string name="grant_text">该应用需要用户授予“读写存储空间”的权限，拒绝将无法使用此应用。</string>
     <string name="cancel">取消</string>
     <string name="returned_from_app_settings_to_activity">读写存储空间权限: %1$s</string>
+    <string name="internalStorage">内部存储</string>
+    <string name="file_analyzer">文件分析器</string>
+    <string name="find_clean_file">发现可清理文件</string>
+    <string name="analyzer">分析</string>
+    <string name="sdcard">SD卡</string>
+    <string name="sdcard_not_available">SD卡不可用</string>
+    <string name="internal_storage_not_available">内部存储卡不可用</string>
+    <string name="no_sdcard">无SD卡</string>
 </resources>
