@@ -34,4 +34,6 @@
     <string name="sdcard_not_available">SD卡不可用</string>
     <string name="internal_storage_not_available">内部存储卡不可用</string>
     <string name="no_sdcard">无SD卡</string>
+    <string name="new_file">新文件</string>
+    <string name="recent_file">最近</string>
 </resources>

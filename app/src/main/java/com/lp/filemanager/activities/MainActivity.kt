@@ -1,12 +1,13 @@
 package com.lp.filemanager.activities
 
-import android.os.Bundle
-import android.util.Log
+import android.arch.lifecycle.Observer
+import android.arch.lifecycle.ViewModelProviders
 import android.view.Menu
 import android.view.MenuItem
 import com.lp.filemanager.R
 import com.lp.filemanager.activities.superclasses.ThemedActivity
 import com.lp.filemanager.adapters.MainAdapter
+import com.lp.filemanager.viewmodel.MainViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.layout_search.*
 
@@ -14,18 +15,33 @@ import kotlinx.android.synthetic.main.layout_search.*
 class MainActivity : ThemedActivity() {
 
     private val TAG = "MainActivity"
+    private lateinit var mainAdapter: MainAdapter
+    private lateinit var mainViewModel: MainViewModel
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        Log.d(TAG, "onCreate")
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+    override fun getLayoutId(): Int {
+        return R.layout.activity_main
+    }
+
+    override fun createViewModelAndObserveLiveData() {
+        mainViewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
+        mainViewModel.liveData.observe(this, Observer {
+            it?.let {
+                mainAdapter.list = it
+                mainAdapter.notifyDataSetChanged()
+            }
+        })
+    }
+
+    override fun init() {
         setSupportActionBar(toolbar)
         setListener()
         initRecyclerView()
+        mainViewModel.getMainData()
     }
 
     private fun initRecyclerView() {
-        rvMain.adapter = MainAdapter(this)
+        mainAdapter = MainAdapter(this, ArrayList())
+        rvMain.adapter = mainAdapter
     }
 
     private fun setListener() {

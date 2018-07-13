@@ -15,7 +15,7 @@ import com.readystatesoftware.systembartint.SystemBarTintManager
  * Created by LiPin on 2017/9/21 15:15.
  * 描述：
  */
-open class ThemedActivity : BasicActivity() {
+abstract class ThemedActivity : BasicActivity() {
 
     private val TAG = "ThemedActivity"
     private lateinit var sharedPrefs: SharedPreferences
