@@ -1,20 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:layout_height="wrap_content">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rvClassify"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:background="@color/text_white" />
 
     <ImageView
         android:id="@+id/ivMore"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/bg_more_selected"
         android:paddingBottom="@dimen/dp10"
         android:paddingTop="@dimen/dp10"
-        android:background="@drawable/bg_more_selected"
-        android:src="@drawable/toolbar_more_list_down" />
-</LinearLayout>
+        android:src="@drawable/toolbar_more_list_down"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvRecent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/text_white"
+        android:padding="@dimen/dp10"
+        android:text="@string/recent_file"
+        android:textColor="@color/text_646D75"
+        android:textSize="@dimen/sp14"
+        app:layout_constraintTop_toBottomOf="@id/ivMore" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rvRecent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/text_white"
+        app:layout_constraintTop_toBottomOf="@+id/tvRecent" />
+
+</android.support.constraint.ConstraintLayout>

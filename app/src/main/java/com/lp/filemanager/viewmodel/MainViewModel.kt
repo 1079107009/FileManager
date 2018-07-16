@@ -27,7 +27,6 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         val list = ArrayList<Any>()
         list.add(getHeaderData())
         list.add(getCenterData())
-        list.add(Any())
         liveData.value = list
     }
 
