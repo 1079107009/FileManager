@@ -1,5 +1,6 @@
 package com.lp.filemanager.activities.superclasses
 
+import android.Manifest
 import android.content.SharedPreferences
 import android.os.Build
 import android.os.Build.VERSION.SDK_INT
@@ -8,7 +9,9 @@ import android.preference.PreferenceManager
 import android.support.v4.content.ContextCompat
 import android.view.WindowManager
 import com.lp.filemanager.R
+import com.lp.filemanager.ui.dialogs.GeneralDialogCreation
 import com.readystatesoftware.systembartint.SystemBarTintManager
+import com.tbruyelle.rxpermissions2.RxPermissions
 
 
 /**
@@ -29,21 +32,21 @@ abstract class ThemedActivity : BasicActivity() {
         sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this)
         setStatusBarColor()
         //请求存储权限
-//        val rxPermissions = RxPermissions(this)
-//        rxPermissions
-//                .request(Manifest.permission.READ_EXTERNAL_STORAGE)
-//                .subscribe {
-//                    if (!it) {
-//                        GeneralDialogCreation.showBasicDialog(this, with(resources) {
-//                            val texts = arrayOf(
-//                                    getString(R.string.grant_text),
-//                                    getString(R.string.prompt),
-//                                    getString(R.string.grant),
-//                                    getString(R.string.cancel))
-//                            texts
-//                        }).show()
-//                    }
-//                }
+        val rxPermissions = RxPermissions(this)
+        rxPermissions
+                .request(Manifest.permission.READ_EXTERNAL_STORAGE)
+                .subscribe {
+                    if (!it) {
+                        GeneralDialogCreation.showBasicDialog(this, with(resources) {
+                            val texts = arrayOf(
+                                    getString(R.string.grant_text),
+                                    getString(R.string.prompt),
+                                    getString(R.string.grant),
+                                    getString(R.string.cancel))
+                            texts
+                        }).show()
+                    }
+                }
     }
 
     private fun setStatusBarColor() {

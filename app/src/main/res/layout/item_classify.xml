@@ -8,7 +8,19 @@
     <ImageView
         android:id="@+id/ivIcon"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--<TextView-->
+    <!--android:id="@+id/tvNum"-->
+    <!--android:layout_width="@dimen/dp16"-->
+    <!--android:layout_height="@dimen/dp16"-->
+    <!--android:background="@drawable/bg_main_center_item_top"-->
+    <!--android:gravity="center"-->
+    <!--android:text="1"-->
+    <!--android:textColor="@color/text_white"-->
+    <!--android:textSize="@dimen/sp10"-->
+    <!--app:layout_constraintEnd_toEndOf="@id/ivIcon" />-->
 
     <TextView
         android:id="@+id/tvName"

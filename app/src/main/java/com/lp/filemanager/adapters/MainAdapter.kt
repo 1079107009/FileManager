@@ -1,17 +1,14 @@
 package com.lp.filemanager.adapters
 
-import android.animation.ValueAnimator
 import android.annotation.SuppressLint
 import android.content.Context
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.animation.doOnEnd
 import com.lp.filemanager.R
 import com.lp.filemanager.bean.CenterItem
 import com.lp.filemanager.bean.HeaderItem
@@ -37,6 +34,7 @@ class MainAdapter(private val context: Context, var list: List<Any>)
     companion object {
         const val HEADER = 0
         const val CENTER = 1
+        const val RECENT = 2
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -45,9 +43,13 @@ class MainAdapter(private val context: Context, var list: List<Any>)
                 val view = LayoutInflater.from(context).inflate(R.layout.item_main_header, parent, false)
                 HeaderViewHolder(view)
             }
-            else -> {
+            CENTER -> {
                 val view = LayoutInflater.from(context).inflate(R.layout.item_main_center, parent, false)
                 CenterViewHolder(view)
+            }
+            else -> {
+                val view = LayoutInflater.from(context).inflate(R.layout.item_main_recent, parent, false)
+                RecentViewHolder(view)
             }
         }
     }
@@ -61,10 +63,17 @@ class MainAdapter(private val context: Context, var list: List<Any>)
             HEADER -> {
                 bindHeaderViewHolder((holder as HeaderViewHolder), (list[0] as HeaderItem))
             }
-            else -> {
+            CENTER -> {
                 bindCenterViewHolder((holder as CenterViewHolder), (list[1] as List<CenterItem>))
             }
+            else -> {
+                bindRecentViewHolder((holder as RecentViewHolder))
+            }
         }
+    }
+
+    private fun bindRecentViewHolder(holder: RecentViewHolder) {
+
     }
 
     private fun bindHeaderViewHolder(holder: HeaderViewHolder, headerItem: HeaderItem) {
@@ -98,71 +107,43 @@ class MainAdapter(private val context: Context, var list: List<Any>)
 
     private fun bindCenterViewHolder(holder: CenterViewHolder, list: List<CenterItem>) {
         val tempList = list.subList(0, 8)
-        var height = 0
         holder.itemView.rvClassify.layoutManager = GridLayoutManager(context, 4)
         val adapter = CenterItemAdapter(context, tempList)
         holder.itemView.rvClassify.adapter = adapter
-        holder.itemView.rvClassify.post {
-            height = holder.itemView.rvClassify.height
-            (holder.itemView.ivMore.layoutParams as ViewGroup.MarginLayoutParams).topMargin = height
-            Log.e(TAG, "height------------$height")
-            holder.itemView.ivMore.requestLayout()
-        }
         holder.itemView.ivMore.setOnClickListener {
             if (isCenterExpand) {
-                rollUp(holder.itemView.ivMore, adapter, tempList, height)
+                rollUp(holder.itemView.ivMore, adapter, tempList)
             } else {
-                expand(holder.itemView.ivMore, adapter, list, holder.itemView.rvClassify)
+                expand(holder.itemView.ivMore, adapter, list)
             }
             isCenterExpand = !isCenterExpand
         }
     }
 
-    private fun rollUp(ivMore: ImageView, adapter: CenterItemAdapter, list: List<CenterItem>,
-                       height: Int) {
-        val topMargin = (ivMore.layoutParams as ViewGroup.MarginLayoutParams).topMargin
-        val animator = ValueAnimator.ofInt(topMargin, height)
-        animator.duration = 500
-        animator.addUpdateListener {
-            Log.e(TAG, "animatedValue------------" + it.animatedValue)
-            (ivMore.layoutParams as ViewGroup.MarginLayoutParams).topMargin = it.animatedValue as Int
-            ivMore.requestLayout()
-        }
-        animator.doOnEnd {
-            ivMore.setImageResource(R.drawable.toolbar_more_list_down)
-            adapter.list = list
-            adapter.notifyItemRangeRemoved(8, 3)
-        }
-        animator.start()
+    private fun rollUp(ivMore: ImageView, adapter: CenterItemAdapter, list: List<CenterItem>) {
+        ivMore.setImageResource(R.drawable.toolbar_more_list_down)
+        adapter.list = list
+        adapter.notifyItemRangeRemoved(8, 3)
     }
 
-    private fun expand(ivMore: ImageView, adapter: CenterItemAdapter, list: List<CenterItem>,
-                       rvClassify: RecyclerView) {
+    private fun expand(ivMore: ImageView, adapter: CenterItemAdapter, list: List<CenterItem>) {
         ivMore.setImageResource(R.drawable.toolbar_more_list_up)
         adapter.list = list
         adapter.notifyItemRangeInserted(8, 3)
-        rvClassify.post {
-            val topMargin = (ivMore.layoutParams as ViewGroup.MarginLayoutParams).topMargin
-            val animator = ValueAnimator.ofInt(topMargin, rvClassify.height)
-            animator.duration = 500
-            animator.addUpdateListener {
-                Log.e(TAG, "animatedValue------------" + it.animatedValue)
-                (ivMore.layoutParams as ViewGroup.MarginLayoutParams).topMargin = it.animatedValue as Int
-                ivMore.requestLayout()
-            }
-            animator.start()
-        }
     }
 
     override fun getItemViewType(position: Int): Int {
         return when (position) {
             0 -> HEADER
-            else -> CENTER
+            1 -> CENTER
+            else -> RECENT
         }
     }
 
     private inner class HeaderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
     private inner class CenterViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+
+    private inner class RecentViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
 }
